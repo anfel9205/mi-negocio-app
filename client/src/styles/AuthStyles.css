@@ -1,7 +1,7 @@
 .login-container {
   height: 100vh;
   width: 100vw;
-  background-color: #fffcf2; /* fondo oscuro */
+  background-color: #fffcf2; /* fondo claro */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,10 +9,17 @@
 }
 
 .app-title {
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 4rem;
+  font-weight: 500;
   color: #252422;
-  margin-bottom: 40px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.sub-Auth {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #252422;
   text-align: center;
 }
 
@@ -27,10 +34,10 @@
 
 .login-form input {
   padding: 12px 16px;
-  border: none;
+  border: solid 1px ;
   border-radius: 8px;
   font-size: 1rem;
-  background-color: #ccc5b9;
+  background-color: none;
   color: #000000;
   outline: none;
 }
@@ -46,7 +53,7 @@
   border-radius: 8px;
   font-size: 1rem;
   font-weight: bold;
-  background: linear-gradient(to right, #eb5e28, #eb5e28);
+  background-color: #eb5e28;
   color: #fff;
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -54,6 +61,16 @@
 
 .login-form button:hover {
   transform: scale(1.03);
+}
+.link-Auth {
+  color: #eb5e28;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.link-Auth:hover {
+  text-decoration: underline;
+  color: #252422;
 }
 
 /* Mensaje de error */

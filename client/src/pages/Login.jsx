@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"; // Usaremos los estilos nuevos
+import "../styles/AuthStyles.css"; // ✅ antes era login.css
+import { Link } from "react-router-dom";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +24,8 @@ const Login = () => {
   return (
     <div className="login-container">
       {/* Logo de la app */}
-      <h1 className="app-title">My Business Control</h1>
+      <h1 className="app-title">OneBiz</h1>
+      <h2 className="sub-Auth">Bienvenido</h2>
 
       {/* Formulario de login */}
       <form onSubmit={handleSubmit} className="login-form">
@@ -45,6 +48,9 @@ const Login = () => {
         />
 
         <button type="submit">Iniciar Sesión</button>
+        <p>
+          ¿No tienes cuenta? <Link className="link-Auth" to="/register">Crear cuenta</Link>
+        </p>
       </form>
     </div>
   );
