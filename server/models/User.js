@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 // Definimos el esquema del usuario
 const UserSchema = new mongoose.Schema({
@@ -19,4 +19,4 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true }); // Crea campos createdAt y updatedAt
 
 // Exportamos el modelo
-export default mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", UserSchema);
