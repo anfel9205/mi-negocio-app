@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/AuthStyles.css"; // ✅ mismo estilo
+import axios from "axios";
+
 
 function Register() {
       // Estados para capturar valores del formulario
@@ -13,13 +15,23 @@ function Register() {
   // Hook para redirigir tras registrar
   const navigate = useNavigate();
 
-  // 2. Función que maneja el envío del formulario
-  const handleRegister = (e) => {
-    e.preventDefault(); // evita recarga de página
+  const handleRegister = async (e) => {
+  e.preventDefault();
 
-    // Por ahora, solo mostramos en consola
-    console.log({ username, email, password });
-  };
+  try {
+    const res = await axios.post("http://localhost:5000/api/auth/register", {
+      username,
+      email,
+      password,
+    });
+
+    console.log(res.data.message); // Confirmación en consola
+    navigate("/"); // Redirige al login
+  } catch (err) {
+    setError(err.response?.data?.message || "Error al registrar");
+  }
+};
+
 
   return (
     <div className="login-container">
