@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/AuthStyles.css"; // ✅ antes era login.css
@@ -11,15 +12,25 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (email === "admin@gmail.com" && password === "123456") {
-      navigate("/dashboard");
-    } else {
-      setError("Correo o contraseña incorrectos");
-    }
-  };
+  try {
+    const res = await axios.post("http://localhost:5000/api/auth/login", {
+      email,
+      password,
+    });
+
+    // Guardar token y datos de usuario en localStorage
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+
+    // Redirigir al dashboard
+    navigate("/dashboard");
+  } catch (err) {
+    setError(err.response?.data?.message || "Error al iniciar sesión");
+  }
+};
 
   return (
     <div className="login-container">
